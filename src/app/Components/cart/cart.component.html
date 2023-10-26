@@ -1,0 +1,42 @@
+<section class="container  shadow mt-5 p-3 rounded bg-main-light ">
+  <h2>Shop Cart</h2>
+
+
+  <div class="row border-bottom mt-3 " *ngFor="let item of cartShop.products">
+    <div class="col-md-1 py-2">
+      <img class="w-100 " [src]="item.product.imageCover" [alt]="item.product.title">
+    </div>
+    <div class="col-md-11 mt-3 d-flex justify-content-between align-items-center">
+      <div>
+        <p class="mb-0">{{item.product.title}} </p>
+        <p class="text-main mb-0">Price: {{item.price | currency:"EGP "}} </p>
+        <button (click)="removeItem(item.product._id)" class="btn p-0 m-0 text-main"><i
+            class="fa-regular fa-trash-can"></i>Remove</button>
+      </div>
+      <div>
+        <button #btn1 (click)="updateCount(item.product._id, item.count -1, btn1, btn2 )"
+          class="btn border-success main-btn btn-sm">
+          -
+        </button>
+        <span> {{item.count}} </span>
+        <button #btn2 (click)="updateCount(item.product._id, item.count + 1, btn1, btn2)"
+          class="btn border-success main-btn btn-sm ">
+          +
+        </button>
+      </div>
+    </div>
+
+  </div>
+  <div class="text-main  mt-3  d-flex justify-content-between align-items-center">
+    <div>
+      <p> Total Price : {{cartShop.totalCartPrice | currency: "EGP "}} </p>
+    </div>
+    <div><button [routerLink]="['/payment', cartShop._id]" class="main-btn btn "> payment <img
+          src="./assets/images/visa-1.svg" alt=""></button></div>
+
+  </div>
+
+
+
+
+</section>
