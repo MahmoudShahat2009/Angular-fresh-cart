@@ -1,5 +1,4 @@
 import { CartService } from './../../service/cart.service';
-
 import { Component, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
@@ -27,16 +26,15 @@ export class CartComponent implements OnInit {
       next:(respons)=>{
         console.log(respons);
         this.cartShop = respons.data
+        this._CartService.cartNumber.next(respons.numOfCartItems)
       }
     })
   };
   updateCount(id:string, count:number, el1:HTMLButtonElement, el2:HTMLButtonElement ):void{
 
     if(count>= 1){
-
       this._Renderer2.setAttribute(el1, 'disabled', 'true' ),
       this._Renderer2.setAttribute(el2, 'disabled', 'true' ),
-
       this._CartService.updataQuantity(id, count,).subscribe({
         next:(respons)=>{
         console.log(respons);

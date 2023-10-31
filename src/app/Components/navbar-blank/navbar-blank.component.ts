@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { CartService } from './../../service/cart.service';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,10 +7,25 @@ import { Router } from '@angular/router';
   templateUrl: './navbar-blank.component.html',
   styleUrls: ['./navbar-blank.component.scss']
 })
-export class NavbarBlankComponent {
+export class NavbarBlankComponent implements OnInit {
 
-constructor (private _Router:Router){}
+constructor (private _Router:Router, private _CartService:CartService ){}
 
+cartShownum:number = 0
+
+ngOnInit(): void {
+    this._CartService.cartNumber.subscribe({
+      next:(data)=>
+      this.cartShownum = data
+    })
+
+    this._CartService.getCartUser().subscribe({
+      next:(respons)=>{
+        this.cartShownum = respons.numOfCartItems
+
+      }
+    })
+}
 
   signout():void{
     localStorage.removeItem('_token');
@@ -20,4 +36,9 @@ constructor (private _Router:Router){}
   forgetpassword():void{
     this._Router.navigate(['/forgetpassword'])
   }
+
+  updatepassword():void{
+    this._Router.navigate(['/forgetpassword'])
+  }
+
 }

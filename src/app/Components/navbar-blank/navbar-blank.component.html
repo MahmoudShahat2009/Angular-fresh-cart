@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
   <div class="container">
     <a class="navbar-brand fw-bold " routerLink="/">
       <i class="fa-brands fa-opencart fa-2x" style="color: #08e208;"></i>
-      Frech-cart
+      Fresh-cart
     </a>
     <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
       aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,9 +12,6 @@
       <ul class="navbar-nav me-auto mt-2 mt-lg-0">
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active-link" routerLink='/home'>Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active-link" routerLink='/cart'>Cart</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active-link" routerLink='/wishlist'>Wish List</a>
@@ -30,9 +27,16 @@
         </li>
       </ul>
     </div>
-    <div class="fw-bold cursor-pointer  ">
+    <div class="fw-bold cursor-pointer d-flex justify-content-between  ">
       <button class="main-btn mx-2" (click)="forgetpassword()">Forgit Password?</button>
-      <i class="fa-solid fa-cart-shopping fs-4" style="color: #08e208;"></i>
+      <button class="main-btn mx-2" (click)="updatepassword()">Update Password?</button>
+      <div>
+        <a class="position-relative " routerLink='/cart'>
+          <i class="fa-solid fa-cart-shopping fs-4" style="color: #08e208;"></i>
+          <span class="badge bg-info position-absolute bottom-100   ">{{cartShownum}}</span>
+        </a>
+      </div>
+
       <span (click)="signout()" class=" ps-3">log out</span>
     </div>
   </div>

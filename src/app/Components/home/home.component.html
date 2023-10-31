@@ -1,4 +1,4 @@
-<section>
+<section class="container m-5 p-5">
   <div class="row g-0">
     <div class="col-md-9">
       <owl-carousel-o [options]="mainSlaider">
@@ -39,10 +39,12 @@
 <section class=" container mt-5 ">
   <div class="row g-4">
     <div *ngFor="let item of productData" class="col-sm-6 col-md-4 col-lg-3  ">
-      <div class="p-3 fa-border shadow h-100 rounded-2">
+
+      <div class="p-3 fa-border shadow h-100 rounded-2 product">
+        <button class="btn"><i class="fa-solid fa-heart fa-2x text-main"></i></button>
         <div role="button" [routerLink]="['/details' , item._id]">
           <div>
-            <img class="w-100" height="300px" [src]="item.imageCover" alt="">
+            <img class="w-100" height="250px" [src]="item.imageCover" alt="">
             <h4 class="font-sm  text-main">{{item.category.name}} </h4>
             <h3 class="font-sm"> {{item.title | cuting}} </h3>
           </div>

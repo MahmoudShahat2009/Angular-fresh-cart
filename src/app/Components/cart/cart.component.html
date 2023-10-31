@@ -1,7 +1,6 @@
 <section class="container  shadow mt-5 p-3 rounded bg-main-light ">
   <h2>Shop Cart</h2>
 
-
   <div class="row border-bottom mt-3 " *ngFor="let item of cartShop.products">
     <div class="col-md-1 py-2">
       <img class="w-100 " [src]="item.product.imageCover" [alt]="item.product.title">
@@ -33,10 +32,5 @@
     </div>
     <div><button [routerLink]="['/payment', cartShop._id]" class="main-btn btn "> payment <img
           src="./assets/images/visa-1.svg" alt=""></button></div>
-
   </div>
-
-
-
-
 </section>

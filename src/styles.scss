@@ -61,15 +61,13 @@ $main-transition: 0.8s;
   color: #ffffff8e !important;
   cursor: not-allowed;
 }
-.product{
-  border: 1px solid #08e208;
-  border-radius: 3px;
-}
+
 
 .product {
   &:hover {
     box-shadow: $shadow;
-    border: solid 1px var(--main-color);
+    border: solid 1px #08e208;
+    scale: 1.1;
 
     .add-btn {
       opacity: 1;

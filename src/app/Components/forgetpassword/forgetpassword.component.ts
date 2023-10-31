@@ -14,6 +14,7 @@ constructor(private _ForgetpasswordService:ForgetpasswordService, private _Route
   step1:boolean = true;
   step2:boolean = false;
   step3:boolean = false;
+  step4:boolean = false;
 
   userMesage:string =""
 
@@ -66,8 +67,6 @@ constructor(private _ForgetpasswordService:ForgetpasswordService, private _Route
 
 newPassword():void{
   let newEamil= this.resetPassword.value
-
-
   this._ForgetpasswordService.resetPassword(newEamil).subscribe({
     next:(respons)=>{
       console.log(respons);
