@@ -1,3 +1,4 @@
+import { LodingInterceptorInterceptor } from './loding-interceptor.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,7 +18,7 @@ import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component'
 import { BlankLayoutComponent } from './layout/blank-layout/blank-layout.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
-import{HttpClientModule}from '@angular/common/http';
+import{HttpClientModule, HTTP_INTERCEPTORS}from '@angular/common/http';
 import { CutingPipe } from './cuting.pipe';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,7 +26,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ToastrModule } from 'ngx-toastr';
 import { PaymentComponent } from './Components/payment/payment.component';
 import { AllordersComponent } from './Components/allorders/allorders.component';
-import { ForgetpasswordComponent } from './Components/forgetpassword/forgetpassword.component'
+import { ForgetpasswordComponent } from './Components/forgetpassword/forgetpassword.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -59,9 +61,12 @@ import { ForgetpasswordComponent } from './Components/forgetpassword/forgetpassw
     HttpClientModule,
     BrowserAnimationsModule,
     CarouselModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxSpinnerModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass:LodingInterceptorInterceptor , multi:true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

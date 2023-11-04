@@ -1,4 +1,4 @@
-<section class="container m-5 p-5">
+<section class="container-fluid  p-3">
   <div class="row g-0">
     <div class="col-md-9">
       <owl-carousel-o [options]="mainSlaider">
@@ -24,7 +24,7 @@
 
 
 
-<section class=" container-fluid shadow mt-3 bg-body-tertiary">
+<section class=" container-fluid  mt-3 p-3">
   <h2>Shop Categories</h2>
   <owl-carousel-o [options]="customOptions">
     <ng-container *ngFor="let slide of Categories">
@@ -36,15 +36,15 @@
   </owl-carousel-o>
 </section>
 
-<section class=" container mt-5 ">
-  <div class="row g-4">
+<section class=" container-fluid my-5 ">
+  <div class="row g-3">
     <div *ngFor="let item of productData" class="col-sm-6 col-md-4 col-lg-3  ">
 
-      <div class="p-3 fa-border shadow h-100 rounded-2 product">
-        <button class="btn"><i class="fa-solid fa-heart fa-2x text-main"></i></button>
+      <div class=" fa-border shadow p-3  rounded product">
+        <button class="btn" (click)="addWishList(item._id)"><i class="fa-solid fa-heart fa-2x text-main"></i></button>
         <div role="button" [routerLink]="['/details' , item._id]">
           <div>
-            <img class="w-100" height="250px" [src]="item.imageCover" alt="">
+            <img class="w-100" height="200" [src]="item.imageCover" alt="">
             <h4 class="font-sm  text-main">{{item.category.name}} </h4>
             <h3 class="font-sm"> {{item.title | cuting}} </h3>
           </div>

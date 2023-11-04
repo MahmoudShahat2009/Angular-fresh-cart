@@ -32,9 +32,6 @@ ngOnInit(): void {
       next:(respons)=>{
         console.log(respons.data);
         this.Categories = respons.data
-
-
-
       }
     })
 
@@ -51,12 +48,12 @@ addProduct(id:string):void{
   })
 }
 
-addWishList(id:string):void{
-  this._CartService.addToCart(id).subscribe({
+addWishList(id:object):void{
+  this._CartService.addWishList(id).subscribe({
     next:(respons)=>{
-      console.log(respons);
+      console.log(respons.data);
       this._ToastrService.success(respons.message)
-      this._CartService.cartNumber.next(respons.numOfCartItems)
+      // this._CartService.cartNumber.next(respons.numOfCartItems)
     }
   })
 }

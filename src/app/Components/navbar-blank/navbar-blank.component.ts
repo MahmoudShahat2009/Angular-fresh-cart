@@ -12,19 +12,38 @@ export class NavbarBlankComponent implements OnInit {
 constructor (private _Router:Router, private _CartService:CartService ){}
 
 cartShownum:number = 0
+showWishNum:number = 0
 
 ngOnInit(): void {
     this._CartService.cartNumber.subscribe({
       next:(data)=>
       this.cartShownum = data
-    })
+
+    }),
 
     this._CartService.getCartUser().subscribe({
       next:(respons)=>{
         this.cartShownum = respons.numOfCartItems
+        console.log(this.cartShownum , "numbercart");
+
 
       }
+    }),
+
+
+    this._CartService.wishListNum.subscribe({
+      next:(data)=>{
+        console.log(data);
+        this.showWishNum = data
+      }
+    }),
+    this._CartService.getWishLIst().subscribe({
+      next:(response)=>{
+        this.showWishNum = response.count
+      }
     })
+
+
 }
 
   signout():void{

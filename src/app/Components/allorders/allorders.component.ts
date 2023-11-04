@@ -6,19 +6,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './allorders.component.html',
   styleUrls: ['./allorders.component.scss']
 })
-export class AllordersComponent implements OnInit{
+export class AllordersComponent {
   constructor(private _CartService:CartService ){}
-  allorders:any = []
 
-  ngOnInit(): void{
-
-    this._CartService.allorders().subscribe({
-      next:(respons)=>{
-        console.log(respons.data[0].cartItems);
-        this.allorders = respons.data
-
-      }
-    })
-
-  }
 }

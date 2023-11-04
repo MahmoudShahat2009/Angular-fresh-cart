@@ -9,7 +9,9 @@ export class CartService {
 
   constructor(private _HttpClient:HttpClient) { }
 
-  cartNumber:BehaviorSubject<number> = new BehaviorSubject(0)
+  cartNumber:BehaviorSubject<number> = new BehaviorSubject(0);
+  wishListNum:BehaviorSubject<number> = new BehaviorSubject(0)
+
 
   myToken:any ={token:localStorage.getItem('_token')}
 
@@ -66,8 +68,32 @@ checkout(cart_id:string, orderDetales:object):Observable<any>{
  }
  )
 };
-allorders():Observable<any>{
-  return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/orders/`)
-}
 
+addWishList(prodId:object):Observable<any>{
+   return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/wishlist` ,
+  {
+    productId: prodId
+  },
+  {
+    headers:this.myToken,
+  }
+)
+};
+
+getWishLIst():Observable<any>{
+  return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/wishlist`,
+  {
+    headers:this.myToken
+  }
+
+  )
+};
+
+deleteWishList(params:string):Observable<any>{
+  return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/wishlist/${params}` ,
+  {
+    headers:this.myToken
+  }
+  )
+}
 }

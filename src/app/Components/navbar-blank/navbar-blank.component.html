@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-  <div class="container">
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top ">
+  <div class="container-fluid  ">
     <a class="navbar-brand fw-bold " routerLink="/">
       <i class="fa-brands fa-opencart fa-2x" style="color: #08e208;"></i>
       Fresh-cart
@@ -14,9 +14,6 @@
           <a class="nav-link" routerLinkActive="active-link" routerLink='/home'>Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active-link" routerLink='/wishlist'>Wish List</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" routerLinkActive="active-link" routerLink='/categories'>Categories</a>
         </li>
         <li class="nav-item">
@@ -28,15 +25,16 @@
       </ul>
     </div>
     <div class="fw-bold cursor-pointer d-flex justify-content-between  ">
-      <button class="main-btn mx-2" (click)="forgetpassword()">Forgit Password?</button>
-      <button class="main-btn mx-2" (click)="updatepassword()">Update Password?</button>
-      <div>
-        <a class="position-relative " routerLink='/cart'>
+      <div class=" d-flex me-3 ">
+        <a class="position-relative me-2 " routerLink='/wishlist'>
+          <i class="fa-regular fa-heart fs-4 " style="color: #08e208;"></i>
+          <span class="badge bg-info position-absolute bottom-100 start-50 ">{{showWishNum}}</span>
+        </a>
+        <a class="position-relative ms-2 " routerLink='/cart'>
           <i class="fa-solid fa-cart-shopping fs-4" style="color: #08e208;"></i>
-          <span class="badge bg-info position-absolute bottom-100   ">{{cartShownum}}</span>
+          <span class="badge bg-info position-absolute bottom-100 ">{{cartShownum}}</span>
         </a>
       </div>
-
       <span (click)="signout()" class=" ps-3">log out</span>
     </div>
   </div>
